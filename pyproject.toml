@@ -41,6 +41,8 @@ dependencies = [
     "psycopg2>=2.9.11",
     "fastmcp>=2.12.5",
     "pypdf>=6.1.1",
+    "numexpr>=2.14.1",
+    "langchain-tavily>=0.2.12",
     "ollama>=0.6.0",
     "transformers>=4.57.1",
 ]
