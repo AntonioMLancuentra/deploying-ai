@@ -28,6 +28,7 @@ class WeatherData(BaseModel):
 def weather_service(location: str) -> WeatherData:
     """Fetches weather data for a given location."""
     # Simulated weather data for demonstration purposes
+    # Here is where I would put an API call
     return WeatherData(temperature=22.5, humidity=60.0, wind_speed=5.5)
 
 if __name__ == "__main__":

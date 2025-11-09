@@ -90,8 +90,8 @@ def _evaluate_expression(expression: str) -> str:
     try:
         local_dict = {"pi": math.pi, "e": math.e}
         output = str(
-            numexpr.evaluate(
-                expression.strip(),
+            numexpr.evaluate(        # This is where we do the math calculation
+                expression.strip(),  
                 global_dict={},  # restrict access to globals
                 local_dict=local_dict,  # add common mathematical functions
             )
