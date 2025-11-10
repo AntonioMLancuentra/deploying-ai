@@ -15,8 +15,9 @@ from utils.logger import get_logger
 
 _logs = get_logger(__name__)
 
-import os
-os.environ["LANGSMITH_TRACING"] = "false"  # otherwise LANGSMITH_TRACING=true ihn .env messes up
+# import os
+# os.environ["LANGSMITH_TRACING"] = "false"  # otherwise LANGSMITH_TRACING=true ihn .env messes up
+# we added LANGSMITH_API_KEY after the code above, we tried here
 
 load_dotenv(".secrets")  # relative path from where the code is executed, not from where this file is
 
