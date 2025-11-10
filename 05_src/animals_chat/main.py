@@ -11,14 +11,14 @@ from animals_chat.prompts import return_instructions_root
 import json
 import requests
 from utils.logger import get_logger
-import os
 
 
 _logs = get_logger(__name__)
 
-load_dotenv(".env")
-load_dotenv(".secrets")
+import os
+os.environ["LANGSMITH_TRACING"] = "false"  # otherwise LANGSMITH_TRACING=true ihn .env messes up
 
+load_dotenv(".secrets")  # relative path from where the code is executed, not from where this file is
 
 
 @tool
@@ -65,7 +65,7 @@ class MessagesState(TypedDict):
     messages: Annotated[list[AnyMessage], operator.add]
     llm_calls: int
 
-def llm_call(state: dict):
+def llm_call(state: dict) -> dict:
     """LLM decides whether to call a tool or not"""
     model_with_tools = get_model_with_tools()
     return {
@@ -82,7 +82,7 @@ def llm_call(state: dict):
         "llm_calls": state.get('llm_calls', 0) + 1
     }
 
-def tool_node(state: dict):
+def tool_node(state: dict) -> dict:
     """Performs the tool call"""
     tools = [get_cat_facts, get_dog_facts]
     tools_by_name = {tool.name: tool for tool in tools}

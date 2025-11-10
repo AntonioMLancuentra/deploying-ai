@@ -1,12 +1,9 @@
 from langgraph.graph import StateGraph, MessagesState, START
 from langchain.chat_models import init_chat_model
 from langgraph.prebuilt.tool_node import ToolNode, tools_condition
-from langchain_core.messages import SystemMessage,  HumanMessage
+from langchain_core.messages import SystemMessage
 
 from dotenv import load_dotenv
-import json
-import requests
-import os
 
 from course_chat.prompts import return_instructions
 from course_chat.tools_animals import get_cat_facts, get_dog_facts
@@ -16,9 +13,11 @@ from utils.logger import get_logger
 
 
 _logs = get_logger(__name__)
-load_dotenv(".env")
-load_dotenv(".secrets")
+#load_dotenv(".env")   # no need to, not bringing anything from there 
+load_dotenv(".secrets") # relative path from where the code is executed, not from where this file is
 
+import os
+os.environ["LANGSMITH_TRACING"] = "false"   # otherwise LANGSMITH_TRACING=true ihn .env messes up
 
 chat_agent = init_chat_model(
     "openai:gpt-4o-mini",

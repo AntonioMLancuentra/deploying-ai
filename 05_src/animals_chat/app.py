@@ -1,8 +1,6 @@
 from animals_chat.main import get_animals_chat_agent
 from langchain_core.messages import HumanMessage, AIMessage
 import gradio as gr
-from dotenv import load_dotenv
-import os
 
 from utils.logger import get_logger
 
@@ -10,7 +8,8 @@ _logs = get_logger(__name__)
 
 llm = get_animals_chat_agent()
 
-load_dotenv('.secrets')
+# from dotenv import load_dotenv
+# load_dotenv('.secrets')  # No need in app.py. Needed in main.py
 
 def animals_chat(message: str, history: list[dict]) -> str:
     langchain_messages = []

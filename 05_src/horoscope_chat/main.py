@@ -9,8 +9,8 @@ import os
 
 _logs = get_logger(__name__)
 
-load_dotenv(".env")
-load_dotenv(".secrets")
+load_dotenv(".env")         # relative path from where the code is executed, not from where this file is
+load_dotenv(".secrets")     # relative path from where the code is executed, not from where this file is
 
 
 client = OpenAI()
@@ -60,7 +60,7 @@ def get_horoscope(sign:str, date:str = "TODAY") -> str:
 
 
 
-def get_horoscope_from_service(sign:str, day:str):
+def get_horoscope_from_service(sign:str, day:str) -> requests.models.Response:
     url = "https://horoscope-app-api.vercel.app/api/v1/get-horoscope/daily"
     params = {
         "sign": sign.capitalize(),
@@ -71,7 +71,7 @@ def get_horoscope_from_service(sign:str, day:str):
 
 
 
-def get_horoscope_from_response(sign:str, response:requests.Response) -> str:
+def get_horoscope_from_response(sign:str, response:requests.models.Response) -> str:
     resp_dict = json.loads(response.text)
     data = resp_dict.get("data")
     horoscope_data = data.get("horoscope_data", "No horoscope found.")
