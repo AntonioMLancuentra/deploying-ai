@@ -28,3 +28,5 @@ deploying-ai-env
 *.htm
 *.txt
 *.db
+*.xlsx
+auxiliar/
