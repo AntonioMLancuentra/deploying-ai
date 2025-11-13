@@ -22,3 +22,11 @@ https://pypi.org/project/sec-edgar-downloader/
 https://www.edgartools.io/
 https://github.com/dgunning/edgartools
 https://edgartools.readthedocs.io/en/latest/
+
+Potential stock data API:
+https://marketstack.com/
+https://massive.com/
+https://finazon.io/
+https://twelvedata.com/
+https://www.iex.io/
+
