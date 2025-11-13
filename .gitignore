@@ -29,4 +29,7 @@ deploying-ai-env
 *.txt
 *.db
 *.xlsx
+chunks.pkl
+chunk_index.json
 auxiliar/
+chromadb/
