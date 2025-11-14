@@ -12,8 +12,9 @@ load_dotenv()
 load_dotenv(".secrets")
 
 # Connect to database
-persist_directory="./chromadb"
+persist_directory="./assignment_chat/chromadb"
 chroma_client = chromadb.PersistentClient(path=persist_directory)
+
 # Initialize the same embedding function you used when creating the collection
 embedding_function = OpenAIEmbeddingFunction(
     api_key=os.getenv("OPENAI_API_KEY"),
@@ -28,7 +29,7 @@ collection = chroma_client.get_collection(
 
 
 @tool
-def rag(collection:chromadb.api.models.Collection, prompt:str, n:int=5):
+def rag(prompt:str, n:int=5):  # collection:chromadb.api.models.Collection,
     """
     Search a persistent ChromaDB collection for chunks of documents similar to the query.
     

@@ -45,8 +45,10 @@ def return_instructions() -> str:
         ## Subject to discuss
 
         - You will only give responses related to the Mexican companies in the table.
+        - You can use all the table or any portion of it in your responses
         - For any question related to a period in time, you will only return responses about the last 4 years.
         - If the sources of information used give you contradictory information, return that you do not know the answer. 
+        - If you consider that all or any of the tools did not provide an accurate answer, return that you do not have an answer at this point.
         - You will make exception to these "Subject to discuss" instructions above only in the scenarios described herein.
 
         ## Securities Exchange Commission - EDGAR database
