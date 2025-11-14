@@ -1,6 +1,6 @@
 # Run set PYTHONIOENCODING=utf-8 && python -m course_chat.app
 
-from course_chat.main import get_graph
+from assignment_chat.main import get_graph
 from langchain_core.messages import HumanMessage, AIMessage
 import gradio as gr
 
