@@ -29,6 +29,7 @@ deploying-ai-env
 *.txt
 *.db
 *.xlsx
+*.zip
 chunks.pkl
 chunk_index.json
 auxiliar/
