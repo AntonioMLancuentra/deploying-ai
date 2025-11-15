@@ -30,7 +30,11 @@ The companies in the table are the only companies incorporated in Mexico that di
 The companies that do not appear both the USD and MXN counterpart, the counterpart might exist, I did not find it. 
 Also, Pemex is not a private company, it is an organization owned by the Mexican Government. As such, you cannot buy shares, you can buy bonds. I did not find it listed in US exchanges, it is listed in European exchanges, but still is reporting 6-K form to SEC, I did not dig into the details.
 
-This chat client is an agent. Along with the query, it sends some tools. One of the tools is a RAG on a set of 1010 documents from EDGAR database.
+This chat client is an agent. Along with the query, it sends some tools, described as follows: 
+- tool RAG on a set of 1010 documents from EDGAR database
+- tool API daily market prices
+- tool API web search
+- tool MCP with tool RAG on a set of 1010 documents from EDGAR database
 
 ### RAG - How did I obtain the embeddings
 
@@ -52,11 +56,15 @@ At this point, there was no time to do them all again. Some ideas that I would t
 To be highlighted though, is that later when testing the agent, following system prompt instructions, the agent knows how to read the table above in this readme.md and properly use it in a response.
 By now, lets experiment with and enjoy what we have.
 
-The code described above can be seen in z1_upload_html_sandbox_not_used.ipynb, z2_create_embeddings.ipynb, z3_download_save_embeddings.ipynb, z4_store_chromadb.ipynb, z5_RAG.ipynb.
+The code described above can be seen in z1_upload_html_sandbox_not_used.ipynb, z2_create_embeddings.ipynb, z3_download_save_embeddings.ipynb, z4_store_chromadb.ipynb, z5_RAG.ipynb, in folder pre_coding.
 
 ### APIs: market prices and web search
 
 For both, I created a free-tiered account, got my key, patiently created code until the code worked, encapsulated in a function call in a tool. Tested again.
+
+### MCP RAG
+
+I tried to do direct manual http calls, I had SSL errors. After many hours, I caved, I implemented OpenAI SDK handleing the MCP protocol. It works. To use it, first run the assignment_chat.rag_mcp.server, then run ngrok http 3000, then run assignment_chat.app.
 
 ### Testing the Agent
 
