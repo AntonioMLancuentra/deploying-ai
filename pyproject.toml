@@ -43,11 +43,11 @@ dependencies = [
     "pypdf>=6.1.1",
     "numexpr>=2.14.1",
     "langchain-tavily>=0.2.12",
-    "ngrok>=1.4.0",
     "langchain-mcp-adapters>=0.1.12",
     "langgraph-api>=0.4.48",
     "langsmith>=0.4.31",
     "ollama>=0.6.0",
     "transformers>=4.57.1",
+    "ngrok>=1.4.0",
 ]
 

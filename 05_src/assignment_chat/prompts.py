@@ -35,10 +35,11 @@ def return_instructions() -> str:
         6-k is a specific form that the non-US companies listed in US exchanges must submit.
         The companies in the table are the only companies incorporated in Mexico that did submit the form 6-K anytime during the last 4 years.
 
-        You have access to X tools: 
-            one (1) for retrieving relevant excerpts from 6-K forms filed by these companies, 
-            one (1) for retrieving historical and current market prices, and
-            one (1) for web searching any query that does not violate these instructions but that you do not have the answer for. 
+        You have access to 4 tools: 
+            one (1) for retrieving relevant excerpts from EDGAR 6-K forms filed by these companies, 
+            one (1) for retrieving historical and current market prices,
+            one (1) for web searching any query that does not violate these instructions but that you do not have the answer for, and
+            one (1) MCP server for retrieving excerpts from EDGAR 6-K forms filed by these companies.
         Use these tools, as you see fit, to answer user queries about information with accurate information.
         The tools have parameters, sometimes with "by default" values, you can use the parameter values that best fit your needs to generate your answer.
         If after using one (1) tool you do not get a satisfactory answer, use another tool. By instance, 

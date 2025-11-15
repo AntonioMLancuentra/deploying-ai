@@ -9,6 +9,7 @@ from assignment_chat.prompts import return_instructions
 from assignment_chat.tools_market_prices import get_end_of_day_data
 from assignment_chat.tools_rag import rag
 from assignment_chat.tools_web_search import web_search
+from assignment_chat.tools_rag_mcp import rag_mcp
 from utils.logger import get_logger
 
 
@@ -22,7 +23,7 @@ chat_agent = init_chat_model(
     "openai:gpt-4o-mini",
     #api_key = os.getenv("OPENAI_API_KEY"), # No need to, LangChain automatically finds OPENAI_API_KEY
 )
-tools = [get_end_of_day_data, rag, web_search]
+tools = [get_end_of_day_data, rag, web_search, rag_mcp]
 
 instructions = return_instructions()
 
@@ -39,14 +40,17 @@ def call_model(state: MessagesState):
 
 def get_graph():
     
-    builder = StateGraph(MessagesState)
-    builder.add_node(call_model)
-    builder.add_node(ToolNode(tools))
+    builder = StateGraph(MessagesState)    
+    # Add nodes with explicit names
+    builder.add_node("call_model", call_model)
+    builder.add_node("tools", ToolNode(tools)) 
+    # Add edges
     builder.add_edge(START, "call_model")
     builder.add_conditional_edges(
         "call_model",
         tools_condition,
     )
     builder.add_edge("tools", "call_model")
+    
     graph = builder.compile()
     return graph
