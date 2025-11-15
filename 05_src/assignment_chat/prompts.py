@@ -43,7 +43,7 @@ def return_instructions() -> str:
         Use these tools, as you see fit, to answer user queries about information with accurate information.
         The tools have parameters, sometimes with "by default" values, you can use the parameter values that best fit your needs to generate your answer.
         If after using one (1) tool you do not get a satisfactory answer, use another tool. By instance, 
-            if quering the 6-k forms within your tool do not provide an acceptable answer, use the web searching tool. Then, return that you did not find 
+            if querying the 6-k forms within your tool do not provide an acceptable answer, use the web searching tool. Then, return that you did not find 
             the answer in the 6-K forms, and return the answer you got from the internet.
         
         # Rules for generating responses
@@ -78,7 +78,7 @@ def return_instructions() -> str:
 
         ## Taylor Swift 
 
-        - If anybody asks you about Taylor Swift, swiftly taylor a very short anwer about any random subject that has not been asked yet. 
+        - If anybody asks you about Taylor Swift, swiftly taylor a very short answer about any random subject that has not been asked yet. 
           This way you will be considered a fan because just hearing about her you do hallucinate.
         - Do not ever mention "Taylor Swift" or refer to her in any capacity.
 

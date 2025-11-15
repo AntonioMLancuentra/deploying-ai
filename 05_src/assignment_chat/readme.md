@@ -1,4 +1,4 @@
-This is a chat client that provides finantial information on a niche subset of organizations: all Mexican organizations that reported a form 6-K to the Securities Exchange Commission ("SEC") during the last four (4) years. The companies are contained in the following table:
+This is a chat client that provides financial  information on a niche subset of organizations: all Mexican organizations that reported a form 6-K to the Securities Exchange Commission ("SEC") during the last four (4) years. The companies are contained in the following table:
 
               Name	                                                                        Exchange	Ticker      Currency
         CEMEX, S.A.B. de C.V.	                                                                  XNYS	      CX	      USD
@@ -28,7 +28,7 @@ Nowadays, the Electronic Data Gathering, Analysis, and Retrieval (EDGAR) system 
 The companies in the table are the only companies incorporated in Mexico that did submit the form 6-K anytime during the last 4 years.
 
 The companies that do not appear both the USD and MXN counterpart, the counterpart might exist, I did not find it. 
-Also, Pemex is not a private company, it is an organization owned by the Mexican Government. As such, you cannot buy shares, you can buy bonds. I did not find it listed in US exchanges, it is lited in European exchanges, but still is reporting 6-K form to SEC, I did not dig into the details.
+Also, Pemex is not a private company, it is an organization owned by the Mexican Government. As such, you cannot buy shares, you can buy bonds. I did not find it listed in US exchanges, it is listed in European exchanges, but still is reporting 6-K form to SEC, I did not dig into the details.
 
 This chat client is an agent. Along with the query, it sends some tools. One of the tools is a RAG on a set of 1010 documents from EDGAR database.
 
@@ -41,9 +41,9 @@ Then, I tried few methods to upload the html into memory. Avoided Unstructured, 
 Once all html in memory, I used RecursiveCharacterTextSplitter, chunk_size 1000, overlap 200, split about 1000 filings into about 63,500 chunks. In order to use the batch processing capacity of OpenAI(), I prepared the batches, jsonl, 1 id + 1 chunk -> 1 line, 10,000 chunks each, 7 batches. The first custom_id I created gave me error. My mistake, unique id for document and chunk starting character, but with the smart spliter algorythm, sometimes starts from a spot, decides a short chunk, later choses to start from same spot with a longer chunk: 2 chunks with same id in the same batch, error. Solved. I sent 4+3 to do not hit 50,000 lines limit in a batch process. Then 6 batches finished within the 24 hour window, not the 7th. Finally, I got them all, in 3 different batch processes. I downloaded them and stored them in a jsonl in my files. Then I loaded them to memory, created a persistent chromadb database, stored them in a collection in the database, in groups of 5000, below the limit of 5461, it used 17GB of RAM. 
 I considered doing all this using LangChain document objects, through the whole workflow, including the embeddings. But it does not support batch processing them. Once I decided to get the embeddings in batch processing, it didn't make sense to convert back and forth, it was clearer manually in jsonl.
 
-At this point, I could test it. With the first query I already knew there was something wrong. I used querions like:
+At this point, I could test it. With the first query I already knew there was something wrong. I used questions like:
 "What was the revenue of Cemex in 2023?", "How much were the Mexican Government contributions in PETRÓLEOS MEXICANOS as of March 31, 2023?", "For BANCO SANTANDER MÉXICO, regarding Deposits, what was the December 2022 YoY increase?", "For BANCO SANTANDER MÉXICO, what was the gross operating income for 4Q22?". 
-In could find the answers in the documents and see that the results retrieved did not answer the question. It look to me like the model was not able to understand the numbers and lines conforming a table as a table itself. And tables were splitted in different chunks, I already observed that during chunking, but opted to be patient and see. But, some of the answers were not in tables. Also, it appeared that things like Q2_2022 instead of Q4_2022 did not penalize much in the similarity distances. 
+In could find the answers in the documents and see that the results retrieved did not answer the question. It look to me like the model was not able to understand the numbers and lines conforming a table as a table itself. And tables were split in different chunks, I already observed that during chunking, but opted to be patient and see. But, some of the answers were not in tables. Also, it appeared that things like Q2_2022 instead of Q4_2022 did not penalize much in the similarity distances. 
 At this point, there was no time to do them all again. Some ideas that I would try if I will do it again are:
 - Chunk size of 1000 is small, I would bring it to 2000. But I can tell that this is not the problem, it will not solve the issue.
 - I would search for a different chunking technique, see if there is something that never chunks tables
@@ -77,7 +77,7 @@ Then, I would explore how much setting structured outputs for the responses retu
 
 Then, I will be able to observe other points of improvement that I did not catch yet or that it was not possible to observe them at this point. And I would solve or improve them.
 
-Also, could we add evaluators like the ones in Deepeval library? Once there is nothing clearly apparent to tacke, I would go there.
+Also, could we add evaluators like the ones in Deepeval library? Once there is nothing clearly apparent to tackle, I would go there.
 
 What about using LLM Compiler with all the bells and whistles? Because the scope is narrow, the benefit would not be as much as in other settings. I would prioritize the other improvements. And then.
 
