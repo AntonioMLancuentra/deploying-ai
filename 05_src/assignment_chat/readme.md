@@ -54,6 +54,10 @@ By now, lets experiment with and enjoy what we have.
 
 The code described above can be seen in z1_upload_html_sandbox_not_used.ipynb, z2_create_embeddings.ipynb, z3_download_save_embeddings.ipynb, z4_store_chromadb.ipynb, z5_RAG.ipynb.
 
+### APIs: market prices and web search
+
+For both, I created a free-tiered account, got my key, patiently created code until the code worked, encapsulated in a function call in a tool. Tested again.
+
 ### Testing the Agent
 
 The agent is not able to use the potential of the database in its RAG. But the agent is good at not hallucinating when he does not find the answer, it just answers the it does not have access to such information at this point.
@@ -74,6 +78,8 @@ Then, I would explore how much setting structured outputs for the responses retu
 Then, I will be able to observe other points of improvement that I did not catch yet or that it was not possible to observe them at this point. And I would solve or improve them.
 
 Also, could we add evaluators like the ones in Deepeval library? Once there is nothing clearly apparent to tacke, I would go there.
+
+What about using LLM Compiler with all the bells and whistles? Because the scope is narrow, the benefit would not be as much as in other settings. I would prioritize the other improvements. And then.
 
 ### Time parameters
 
