@@ -61,6 +61,7 @@ The code described above can be seen in z1_upload_html_sandbox_not_used.ipynb, z
 ### APIs: market prices and web search
 
 For both, I created a free-tiered account, got my key, patiently created code until the code worked, encapsulated in a function call in a tool. Tested again.
+The code mentioned can be seen in z8_API_yfinance.ipynb and z9_API_web_search.ipynb, in folder pre_coding.
 
 ### MCP RAG
 
