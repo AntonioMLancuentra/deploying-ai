@@ -29,7 +29,7 @@ collection = chroma_client.get_collection(
 
 
 @tool
-def rag(prompt:str, n:int=5):  # collection:chromadb.api.models.Collection,
+def rag(prompt:str, n:int=5): # collection:dict=collection_name  # With it: AttributeError: 'str' object has no attribute 'query'
     """
     Search a persistent ChromaDB collection for chunks of documents similar to the query.
     
@@ -41,6 +41,7 @@ def rag(prompt:str, n:int=5):  # collection:chromadb.api.models.Collection,
     Returns:
         dict: Search results containing chunks of documents, distances, and metadata
     """
+    _logs.debug(f'Processing query {prompt} and retrieving {n} closer results')
     results = collection.query(
         query_texts=[prompt],
         n_results=n

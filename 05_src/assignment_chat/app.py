@@ -18,7 +18,7 @@ warnings.filterwarnings("ignore", category=DeprecationWarning, module="websocket
 warnings.filterwarnings("ignore", category=DeprecationWarning, module="uvicorn")
 warnings.filterwarnings("ignore", category=DeprecationWarning, module="gradio")
 # warnings.filterwarnings("ignore", category=DeprecationWarning) # remove all warnings, if needed
-# later I updated all packages, including websockets. Still left the warnings for you not to update all packages
+# later I updated all packages, including websockets, this code is no needed anymore. Still left the warnings for you not to update all packages
 
 def course_chat(message: str, history: list[dict]) -> str:
     langchain_messages = []
