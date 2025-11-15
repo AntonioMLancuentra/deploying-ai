@@ -56,11 +56,12 @@ At this point, there was no time to do them all again. Some ideas that I would t
 To be highlighted though, is that later when testing the agent, following system prompt instructions, the agent knows how to read the table above in this readme.md and properly use it in a response.
 By now, lets experiment with and enjoy what we have.
 
-The code described above can be seen in z1_upload_html_sandbox_not_used.ipynb, z2_create_embeddings.ipynb, z3_download_save_embeddings.ipynb, z4_store_chromadb.ipynb, z5_RAG.ipynb.
+The code described above can be seen in z1_upload_html_sandbox_not_used.ipynb, z2_create_embeddings.ipynb, z3_download_save_embeddings.ipynb, z4_store_chromadb.ipynb, z5_RAG.ipynb, in folder pre_coding.
 
 ### APIs: market prices and web search
 
 For both, I created a free-tiered account, got my key, patiently created code until the code worked, encapsulated in a function call in a tool. Tested again.
+The code mentioned can be seen in z8_API_yfinance.ipynb and z9_API_web_search.ipynb, in folder pre_coding.
 
 ### MCP RAG
 
